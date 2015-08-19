@@ -1,0 +1,5 @@
+[gerrit]
+host=review.gluster.org
+port=22
+project=glusterfs-specs.git
+defaultbranch=master
