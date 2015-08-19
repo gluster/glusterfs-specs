@@ -1,12 +1,12 @@
 Feature
 -------
 
-This feature provides a way of preventing split-brains in time.
+This feature provides a way of preventing split-brains in  replica 3 gluster volumes both in time and space.
 
 Summary
 -------
 
-Please see <http://review.gluster.org/#/c/9656/>
+Please see <http://review.gluster.org/#/c/9656/> for the design discussions
 
 Owners
 ------
@@ -24,11 +24,16 @@ Code patches: <http://review.gluster.org/#/c/10257/> and
 
 Detailed Description
 --------------------
+Arbiter volumes are replica 3 volumes where the 3rd brick of the replica is        
+automatically configured as an arbiter node. What this means is that the 3rd       
+brick will store only the file name and metadata, but does not contain any data.
+This configuration is helpful in avoiding split-brains while providing the same 
+level of consistency as a normal replica 3 volume.
 
 Benefit to GlusterFS
 --------------------
 
-It prevents split-brains in time.
+It prevents split-brains in replica 3 volumes and consumes lesser space than a normal replica 3 volume.
 
 Scope
 -----
@@ -72,7 +77,7 @@ User Experience
 
 Similar to a normal replica 3 volume. The only change is the syntax in
 volume creation. See
-<https://github.com/gluster/glusterfs/blob/master/doc/features/afr-arbiter-volumes.md>
+<https://github.com/gluster/glusterfs-specs/blob/master/Features/afr-v1.md>
 
 Dependencies
 ------------
@@ -88,6 +93,7 @@ Status
 ------
 
 Feature completed. See 'Current status' section for the patches.
+Some optimizations under way.
 
 Comments and Discussion
 -----------------------
