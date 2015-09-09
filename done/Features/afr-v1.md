@@ -302,7 +302,7 @@ In this step,
 
  - Data self-heal does things a bit differently to make sure no other writes on the file are blocked for the duration of self-heal because files sizes could be as big as 100G(VM files) and we don't want to block all the transactions until the self-heal is over. Locks translator allows two overlapping locks to be granted if they are from same lock owner. Using this what data self-heal does is it takes a small 128k size range lock and unlock previous acquired lock, heals just that 128k chunk and takes next 128k chunk lock and unlock previous lock and moves to the next one. It always makes sure that at least one lock is present on the file by selfheal throughout the duration of self-heal so that two self-heals don't happen in parallel.
 
- - Data self-heal has two algorithms, where the file can be copied only when there is data mismatch for that chunk called as 'diff' self-heal. The otherone is blind copy of each chunk called 'full' self-heal
+ - Data self-heal has two algorithms, where the file can be copied only when there is data mismatch for that chunk called as 'diff' self-heal. The other one is blind copy of each chunk called 'full' self-heal
 
 3. Change extended attributes to mark new sources after the sync.
 
