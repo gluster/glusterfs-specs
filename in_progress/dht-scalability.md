@@ -118,7 +118,7 @@ might now be visible only as \$GFID\_FOR\_B/c with neither of the parent
 directories even present on that brick. Even that "file" will actually
 be a stub containing only the file's own GFID; to get the contents, one
 would need to look up that GFID in .glusterfs on this or some other
-brick.
+obrick.
 
 Linkfiles will be gone, also subsumed by stubs.
 
