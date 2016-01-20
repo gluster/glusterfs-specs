@@ -29,7 +29,7 @@ Repository Structure
 
 The structure of the repository is as follows::  
 ```
-+-- in_progress/  
++-- under_review/  
 |
 +-- accepted/
 |   +-- release-3.6/  
@@ -49,11 +49,11 @@ landed.
 
 The Flow of an Idea from your Head to Implementation
 ----------------------------------------------------
-First propose a feature by adding a page to the ``in_progress`` directory so
+First propose a feature by adding a page to the ``under_review`` directory so
 that it can be reviewed. Reviewers adding a positive +1/+2 review in gerrit are
 promising that they will review the code when it is proposed. Feature pages
 should be approved and merged as soon as possible, and feature pages in the
-``in_progress`` directory can be updated as often as needed. Iterate on it.
+``under_review`` directory can be updated as often as needed. Iterate on it.
 
 1. Have an idea.
 2. Propose a feature.
@@ -86,7 +86,7 @@ Spec Lifecycle Rules
 How to submit a new feature for review
 --------------------------------------
 1. Clone this repo
-2. Copy the ``template.md`` file in ``in_progress`` directory to
+2. Copy the ``template.md`` file in ``under_review`` directory to
    ``your_feature.md`` 
 3. Make changes to ``your_feature.md``
 4. Submit changes using ``git-review`` tool.
