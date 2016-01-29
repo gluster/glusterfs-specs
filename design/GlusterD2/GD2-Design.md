@@ -22,7 +22,7 @@ Non trivial effort is involved in adding management support for a new feature. A
 
 ## Architectural Overview
 
-[[images/gd2-arch.png]]
+![Glusterd 2.0 Architecture](images/gd2-arch.png)
 
 The core of GD2 is the centralized store. GD2 will maintain the cluster configuration data, which includes peer and volume information, in a central store instead of maintining it on each peer. It is planned to use [etcd](https://coreos.com/etcd/) to provide the centralized store. etcd servers will only run on a subset of the cluster, tentatively being called the monitor cluster. All other nodes of the cluster will be clients of the monitor cluster.
 
