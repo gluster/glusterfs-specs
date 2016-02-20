@@ -149,8 +149,8 @@ can be used for mounting.
 Kerberized Samba- or NFS-clients should be able to connect to a filesystem
 service (Same or NFS-Ganesha), and get authenticated by their User Principal
 Name at the Gluster processes. GSSAPI supports this through constraint
-delegation. Not all Kerberos Domain Controllers support this feature, but
-Active Directory and FreeIPA do.
+delegation (the "S4U2Proxy protocol"). Not all Kerberos Domain Controllers
+support this feature, but Active Directory and FreeIPA do.
 
 There is a difficulty where a filesystem service (like NFS-Ganesha or Samba)
 receive connections from a non-Kerberos client, but do need to communicate
@@ -190,6 +190,11 @@ To solve this problem, `COMPOUND` procedures can be used. A new `SETFSUID` and
 `SETFSGID` FOP could instruct the `COMPOUND` procedure to switch to a certain
 UID/GID. This requires trusting the Gluster-client fully, and should only be
 used as a fall-back solution when constrained delegation is not possible.
+
+By default I/O is not allowed when the `glusterfs/${client}@REALM` SPN is used.
+This would make it possible for any client to do I/O as any user. The option
+`krb5.unconstrained-clients` needs to be configured to allow specific clients
+to use the SPN for I/O.
 
 
 ### Username mapping
@@ -280,15 +285,15 @@ The steps to configure Kerberos access to Gluster volumes would look like:
 1. enable NTP or similar time-syncing between servers
 1. configure Kerberos system-wide in `/etc/krb5.conf`
 1. configure idmapping through `/etc/nsswitch.conf` (LDAP, AD, ..) and `/etc/idmapd.conf`
-1. add Kerberos TGTs to the `/etc/krb5.keytab` file
+1. add Kerberos long term keys to the `/etc/krb5.keytab` file
 1. enable Kerberos through GlusterD
 
 Performing I/O over a FUSE with Kerberos mountpoint:
 
-1. `[root]` mount the volume, uses Kerberos TGT from `/etc/krb5.keytab`
+1. `[root]` mount the volume, uses Kerberos long term keys from `/etc/krb5.keytab`
 1. `[user]` should have a valid Kerberos TGT (obtained with `kinit`)
 1. `[user]` I/O should be permitted as normal
-1. `[user]` after invalidating the Kerberos TGT (with `kdestroy`), I/O should be denied
+1. `[user]` after the Kerberos TGT has expired, I/O should be denied
 
 Different ways of Kerberos usage can be inspected with
 [Wireshark](https://wireshark.org). The RPC-headers will not list the
@@ -304,6 +309,8 @@ servers and enable Kerberos support for the GlusterD and the Gluster Volumes.
 Users with a valid Kerberos TGT should not notice any difference while doing
 I/O.
 
+An administrator can set the `krb5.required` option (TODO: descripe this and
+other configuration values) to require clients to connect over Kerberos only.
 
 # Dependencies
 
