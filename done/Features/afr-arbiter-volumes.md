@@ -40,7 +40,9 @@ prevent files from ending up in split-brain:
 * In all cases, if there is only one source before the FOP is initiated and if
   the FOP fails on that source, the application will receive ENOTCONN.
 
-Note: It is possible to see if a replica 3 volume has arbiter configuration from
+Note: `gluster volume info <VOLNAME>` will have an indication of which bricks
+of the volume are the arbiter bricks.
+It is also possible to see if a replica 3 volume has arbiter configuration from
 the mount point. If
 `$mount_point/.meta/graphs/active/$V0-replicate-0/options/arbiter-count` exists
 and its value is 1, then it is an arbiter volume. Also the client volume graph
@@ -53,4 +55,4 @@ from the arbiter brick will not take place. For example if there are 2 source
 bricks B2 and B3 (B3 being arbiter brick) and B2 is down, then data-self-heal
 will *not* happen from B3 to sink brick B1, and will be pending until B2 comes
 up and heal can happen from it. Note that  metadata and entry self-heals can
-still happen from B3 if it is one of the sources.cd
+still happen from B3 if it is one of the sources.
