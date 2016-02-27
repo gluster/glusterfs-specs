@@ -75,7 +75,7 @@ Detailed Description
 
 #### WORM based Data Tiering
 
-![WORM Tiering ]([image/WORM-Tiering2.png)
+![WORM Tiering](image/WORM-Tiering2.png)
 
   - ##### WORM Volume pairs for File-Tiering
     - ##### Active Volume Tier
@@ -105,7 +105,7 @@ Detailed Description
     - ##### Re-Hydration of Stub :
         The Stub will be Re-Hydrated i.e Data will be moved to Active Volume Tier, on frequent access of data, bases on configurable policies. Just a read-only copy on the Active Volume Tier. Again the frequency of access and heat can be got from CTR Xlator via ***libgfdb***.
 
-![WORM-Tier-Life]([image/WORM-Tier-Life.png)
+![WORM-Tier-Life](image/WORM-Tier-Life.png)
 
 Owners
 ------
