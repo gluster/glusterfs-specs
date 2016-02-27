@@ -6,11 +6,11 @@ Summary
 -------
 
 This feature is about having WORM-based compliance/archiving solution in glusterfs. It mainly focus on the following 
-- ##### Compliance:
+- **Compliance**:
    Laws and regulations to access and store intellectual property and confidential information.
-- ##### WORM/Retention:
+- **WORM/Retention**:
    Store data in a tamper-proof and secure way & Data accessibility policies
-- ##### Archive:
+- **Archive**:
   Storing data in effectively and efficiently & Disaster-Recovery solution
 
   To address the the above we are proposing the following in glusterfs 
