@@ -26,20 +26,19 @@ Detailed Description
 
   - ##### WORM/Retention transition:
     Methods of making a file immutable or non-delete-able or both
-    - ###### Manual POSIX command :
+    - **Manual POSIX command**:
        Using POSIX command chmod (-w or 444 or equivalent mode.
-    - ###### Automatic Retention Transition (Auto-commit) :
+    - **Automatic Retention Transition (Auto-commit)**:
       Dormant Files will be converted into WORM files based on Auto-commit Period
-      - ###### Lazy Auto-commit:
+      - **Lazy Auto-commit**:
         IO Triggered Using timeouts for untouched files. The next IO will cause the transition.
-      - ###### Scheduled Auto-commit:
+      - **Scheduled Auto-commit**:
         Scan Triggered Using timeouts for untouched files. The next scheduled namespace scan will cause the transition. 
         CTR DB via **libgfdb** can be used to find files that have not changed. This can be verified with stat of the file.
-
-      - ###### Retention Profiles/Policies:
+      - **Retention Profiles/Policies**:
         Configurable Policies that guide the WORM/Retention behavior. Contains Default Retention Period, Auto-commit Period, Mode of Retention (Enterprise/Compliance),Auto-Deletion, Data Shredding Mode. Its can be on a Volume Level or Directory/Share Level 
 
-      - ###### Backup ISV Support:
+      - **Backup ISV Support**:
         Exposing the WORM/Retention attributes of a file for Backup.
 
       - ###### Data Storage Options:
