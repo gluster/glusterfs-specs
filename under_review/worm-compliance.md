@@ -53,22 +53,22 @@ Detailed Description
 
 #### WORM Data Maintenance
 
-  - ##### Data Validation/Bitrot Protection:
+  - **Data Validation/Bitrot Protection**:
     Ensuring the data validity of Immutable/Read-only file and safe guarding from bit-rot or any other data corruption.
-    - ##### Checksum Generation:
+    - **Checksum Generation**:
       Options on checksum eg:: MD5, SHA1 or SHA256 etc. A self validating checksum store, which resides on the namespace. 
 
-  - ##### Data Validation Scan:
+  - **Data Validation Scan**:
       Scheduled scan of Immutable/Read-only files checking for data corruption.
-    - ##### Error Detection/Report:
+    - **Error Detection/Report**:
       Data Validation scan reports in XML or CSV format
-    - ##### Error Correction/Heal:
+    - **Error Correction/Heal**:
       Healing the corrupted data if possible.
 
-  - ##### Data Shredding Option: 
-    - ##### Actual Data Shredding :
+  - **Data Shredding Option**: 
+    - **Actual Data Shredding**:
       Before deleting read-only files do data shredding, so that the contents are not recoverable. Options on algorithms can be provided.
-    - ##### Encrypted Data:
+    - **Encrypted Data**:
       Normal Delete will follow key shredding. This will optimize the data shredding.
 
 
@@ -76,32 +76,32 @@ Detailed Description
 
 ![WORM Tiering](image/WORM-Tiering2.png)
 
-  - ##### WORM Volume pairs for File-Tiering
-    - ##### Active Volume Tier
+  - **WORM Volume pairs for File-Tiering**
+    - **Active Volume Tier**
         - Active IO (Read and Write)
         - Faster but Expensive Storage Media (SSD or Faster RPM Disks)
         - Directly connected to the IO Clients
-    - ##### Passive(Archive) Volume Tier
+    - **Passive(Archive) Volume Tier**
         - Passive(Only Read accessed) IO
         - Slower but Cheaper Storage Media 
         - Not Connected to Clients
     - Both the Active and Passive volume tier can belong to two different clusters or the same cluster
  
-    - ##### File Stubbing on Retention Transition :
+    - **File Stubbing on Retention Transition**:
       On Retention Transition (Manual or Auto-commit) data will be purged from the Active Volume Tier and moved to Passive Volume Tier, just leaving behind a file-stub. The Data will be Read-only and adhere to the Retention Policy.
 
-    - ##### Local Distribute/Replication/Cache Policies:
+    - **Local Distribute/Replication/Cache Policies**:
         Active/Passive Volume tiers will have their  own suitable DHT, AFR, Unify, NSR, Cache etc policies/setting
 
-    - ##### Shared Retention Profile:
+    - **Shared Retention Profile**:
         Both the Active and Passive Volume Tier will share common retention profile 
 
-    - ##### Data Validation on Passive Volume Tier
+    - **Data Validation on Passive Volume Tier**
         - Data Validation Scans
         - Detection and Correction
         - Data Validation Store
 
-    - ##### Re-Hydration of Stub :
+    - **Re-Hydration of Stub**:
         The Stub will be Re-Hydrated i.e Data will be moved to Active Volume Tier, on frequent access of data, bases on configurable policies. Just a read-only copy on the Active Volume Tier. Again the frequency of access and heat can be got from CTR Xlator via ***libgfdb***.
 
 ![WORM-Tier-Life](image/WORM-Tier-Life.png)
