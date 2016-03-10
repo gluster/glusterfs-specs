@@ -32,7 +32,7 @@ GD2 will also be a native ReST server, exposing cluster management interfaces vi
 
 The main management interface with GD2 will be a HTTP ReST interface. APIs will be provided for the management of peers, management of volumes, local-GlusterD management, monitoring (events) and long-running asynchronous operations.
 
-More details on the ReST-API can be found at [[ReST-API]] (_note that this is still under active development_).
+More details on the ReST-API can be found [here](ReST-API) (_note that this is still under active development_).
 
 ### Gluster CLI
 
@@ -60,6 +60,7 @@ The summary of the discussion is that,
 
 The mechanisms of promotion and demotion of the nodes in the store cluster are still under discussion.
 
+More on how ETCD bootsrapping is going to be achieved is [here](ETCD-bootstrapping.md)
 
 ## Transaction framework
 
@@ -75,7 +76,7 @@ More details can be found at [[Transaction-framework]].
 
 ## RPC communication
 
-GD2 is going to implement a new cross language RPC framework using [protobuf](https://github.com/google/protobuf). A PoC golang package has been already implemented [here](https://github.com/kshlm/pbrpc). This will be used in communication between GlusterD and GlusterD/Glusterfsd deamons. Clients to bricks and vice versa will still follow the old way of xdr based sun rpc implementation. 
+GD2 is going to implement a new cross language RPC framework using [protobuf](https://github.com/google/protobuf). A PoC golang package has been already implemented [here](https://github.com/kshlm/pbrpc). This will be used in communication between GlusterD and GlusterD/Glusterfsd deamons. Clients to bricks and vice versa will still follow the old way of xdr based sun rpc implementation.
 
 GD2 is going to have the RPC hierarchy in the following manner
 ```

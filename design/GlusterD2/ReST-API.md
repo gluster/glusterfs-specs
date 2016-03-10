@@ -63,14 +63,16 @@ The _peers_ endpoint will be used to manage peers in the cluster. All _peers_ en
 	- **Body**:
 	    - *addresses* : An array of strings. Gives a list of addresses by which the new host can be contacted. The addresses can be FQDNs, short-names or IP addresses. At least 1 address is required
 		- *name* : A string, optional. The name to be used for the peer. This name can be used to refer to the peer in other commands. If not given, the first address in the addresses array will be used as the name.
-		- Example :
+		- *client* : A boolean, optional. It indicates its a proxy etcd given when its set to true
+                - Example :
 ```json
 {
     "addresses": [
         "host1name1",
         "host1name2"
     ],
-    "name": "host1"
+    "name": "host1",
+    "client":true
 }
 ```
 - **Response** :
