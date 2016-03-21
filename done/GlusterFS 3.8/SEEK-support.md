@@ -12,9 +12,10 @@ storage and network overhead when copies are made.
 [Niels de Vos](mailto:ndevos@redhat.com)
 
 ## Current status
-Implemented. Only support for sharding ([bug 1301647]
-(https://bugzilla.redhat.com/1301647)) and stripe (support not planned) are
-missing.
+Implemented, all [relevant patches have been
+merged](http://review.gluster.org/#/q/status:merged+project:glusterfs+branch:master+topic:bug-1220173).
+Only support for sharding ([bug 1301647] (https://bugzilla.redhat.com/1301647))
+and stripe (support not planned) are missing.
 
 
 ## Related Feature Requests and Bugs
@@ -36,7 +37,7 @@ brick(s).
 Sparse files are commonly used in environments with virtual machines. Improving
 the support for sparse files helps users to reduce the storage needed for
 backups and clones of VMs. In addition to that, creating a backup of a VM will
-become faster, because there is no need to transport the (zere filled) 'holes'
+become faster, because there is no need to transport the (zero filled) 'holes'
 over the network anymore.
 
 
