@@ -11,9 +11,9 @@ Gluster should have an operating mode whereby it does not do any management or c
 Owners
 ------
 
-Kaleb Keithley <kkeithle [at] redhat.com>
+Kaleb Keithley <kkeithle@redhat.com>
 
-Jose Rivera <jarrpa [at] redhat.com>
+Jose Rivera <jarrpa@redhat.com>
 
 Current status
 --------------
