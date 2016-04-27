@@ -27,28 +27,34 @@ Eventually the glusterfs nfs server will be fully deprecated in favor of NFS-Gan
 Owners
 ------
 
-Kaleb KEITHLEY <kkeithle [at] redhat.com>
-Niels De Vos <ndevos [at] redhat.com>
+* Kaleb KEITHLEY <kkeithle [at] redhat.com>
+* Niels de Vos <ndevos [at] redhat.com>
 
 Current status
 --------------
 
-Under development
+Complete.
 
 Related Feature Requests and Bugs
 ---------------------------------
 
-None.
+[Bug 1092414](https://bugzilla.redhat.com/1092414)
 
 Detailed Description
 --------------------
 
-None
+Gluster/NFS should not be running on a clean installation of GlusterFS 3.8.
+Only when volumes have `nfs.disable` set to `false` the process should get
+started.
 
 Benefit to GlusterFS
 --------------------
 
-Need to maintain the NFS server xlator is eliminated.
+Need to maintain the NFS server xlator is reduces. It is planned to separate
+Gluster/NFS from the standard GlusterFS installation and supply it as an
+optional component. Marking the Gluster/NFS service disabled by default is a
+step to inform users about the upcoming change, without forcing them to move to
+NFS-Ganesha immediately.
 
 
 Scope
@@ -56,7 +62,8 @@ Scope
 
 #### Nature of proposed change
 
-Change default option value in xlators/mgmt/glusterd/... 
+Change default option value in `xlators/mgmt/glusterd/...` and all test-cases
+that expect Gluster/NFS to be running by default.
 
 #### Implications on manageability
 
@@ -93,7 +100,9 @@ How To Test
 User Experience
 ---------------
 
-None
+Users are advised to deploy NFS-Ganesha instead of Gluster/NFS. However
+Gluster/NFS is still available and can easily be enabled by toggling the
+`nfs.disable` volume option to `false`.
 
 Dependencies
 ------------
@@ -103,14 +112,7 @@ None
 Documentation
 -------------
 
-Change any reference to default value of nfs.disable
-
-Status
-------
-
-One line change to .../xlators/mgmt/glusterd/src/glusterd-nfs-svc.c has been
-posted for review at http://review.gluster.org/13738
-
+Change any reference to default value of `nfs.disable`.
 
 Comments and Discussion
 -----------------------
