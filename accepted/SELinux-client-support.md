@@ -77,12 +77,22 @@ Labelled-NFS.
 
 #### Implications on persistence layer
 
-None.
+Once the feature is active, the brick processes may not access files that have
+a different type than `glusterd_brick_t`. Environments that have contents of
+the bricks with a different target security context type, will not be allowed
+to access the contents. This means that upgrades from previous version need to
+make sure that the contents of the bricks get re-labelled correctly. A command
+like this is needed for all bricks (assuming `/bricks/volume/b1` is displayed
+as a brick path in `gluster volume info`):
 
+    # chcon -t glusterd_brick_t /bricks/volume/b1
 
 #### Implications on 'GlusterFS' backend
 
-None.
+If the filesystem used for the bricks supports SELinux labels, the type of the
+target security context of the contents on the bricks will be set to
+`glusterd_brick_t`. The brick processes will not be allowed to access files
+with a different type.
 
 
 #### Modification to GlusterFS metadata
@@ -95,6 +105,11 @@ attribute is converted to/from `security.selinux` on the client-side.
 
 A new `features/selinux` xlator will need to be inserted in the graph on the
 server-side.
+
+Once a new volume is created, the directories for the bricks should get the
+`glusterd_brick_t` target security context type in case SELinux on the storage
+server is available. This will be handled by a hook-script in the create/post
+event.
 
 
 #### How To Test
