@@ -63,6 +63,9 @@ completed before voting on the final 4.0 feature set.
 -   [Features/rest-api](../GlusterFS 3.7/rest-api.md):
      Fully generic API sufficient to support all CLI operations.
 
+-   [Features/gnfs-config](..GlusterFS 3.11/gnfs-config.md)
+     Conditional configuration and build of legacy gnfs and related packaging
+
 -   Features/mgmt-plugins:
      No more patching glusterd for every new feature.
 
